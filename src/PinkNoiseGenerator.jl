@@ -60,3 +60,5 @@ function gen_pinknoise(
   return irfft(s, size * 2 - 2) ./ sigma
 
 end
+
+export gen_pinknoise
