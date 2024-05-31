@@ -1,6 +1,3 @@
-using Random
-using FFTW
-
 """
 function gen_pinknoise(
   beta::Float64=1.0,
@@ -61,5 +58,3 @@ function gen_pinknoise(
   return irfft(s, size * 2 - 2)
 
 end
-
-export gen_pinknoise

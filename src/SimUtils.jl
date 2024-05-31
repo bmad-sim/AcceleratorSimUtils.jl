@@ -1,6 +1,8 @@
 module SimUtils
+using FFTW, Random, GTPSA
 
-include("PlotTimeSeries.jl")
-include("PinkNoiseGenerator.jl")
+export gen_pinknoise, Quaternion
+
+include("pinknoise.jl")
 
 end
