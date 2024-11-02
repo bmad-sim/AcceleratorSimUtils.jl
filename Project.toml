@@ -1,7 +1,7 @@
 name = "SimUtils"
 uuid = "042f21a8-4046-4c2b-b9ed-b6e14110b343"
 authors = ["mattsignorelli <mgs255@cornell.edu> and contributors"]
-version = "1.1.0-DEV"
+version = "1.2.0-DEV"
 
 [deps]
 FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
