@@ -28,5 +28,5 @@ where `n` is an integer chosen such that
 
 function modulo2(x, amp)
   m2 = mod(x, 2*amp)
-  m2 < amp ? (return m2) : (return m2 - 2.0*amp)
+  m2 < amp ? (return m2) : (return m2 - 2*amp)
 end
