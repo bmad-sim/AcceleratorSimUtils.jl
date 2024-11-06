@@ -1,7 +1,7 @@
 name = "SimUtils"
 uuid = "042f21a8-4046-4c2b-b9ed-b6e14110b343"
 authors = ["mattsignorelli <mgs255@cornell.edu> and contributors"]
-version = "0.2.2"
+version = "0.2.3"
 
 [deps]
 AtomicAndPhysicalConstants = "5c0d271c-5419-4163-b387-496237733d8b"
