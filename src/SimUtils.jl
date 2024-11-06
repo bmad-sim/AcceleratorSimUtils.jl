@@ -1,5 +1,6 @@
 module SimUtils
 using FFTW, Random, GTPSA
+using AtomicAndPhysicalConstants
 
 #export Quaternion
 export gen_pinknoise
