@@ -13,7 +13,7 @@ Also see the functions `pc`, `β`, `β1`, `E_kinetic`, and `γ`
 
 function E_tot(species::Species; pc::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
                            E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
-  m = mass(species)
+  m = massof(species)
 
   if !isnothing(pc)
     return sqrt(pc^2 + m^2)
@@ -44,7 +44,7 @@ Also see the functions `E_tot`, `β`, `β1`, `E_kinetic`, and `γ`
 function pc(species::Species; 
                   E_tot::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
                           E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
-  m = mass(species)
+  m = massof(species)
 
   if !isnothing(E_tot)
     return sqrt(E_tot^2 - m^2)
@@ -75,7 +75,7 @@ Also see the functions `E_tot`, `pc`, `β1`, `E_kinetic`, and `γ`
 function β(species::Species; 
                 E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                           E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
-  m = mass(species)
+  m = massof(species)
 
   if !isnothing(E_tot)
     return sqrt(1 - (m / E_tot)^2)
@@ -106,7 +106,7 @@ Also see the functions `E_tot`; `pc`, `β`, `E_kinetic`, and `γ`
 
 function β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                            E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
-  m = mass(species)
+  m = massof(species)
 
   if !isnothing(E_tot)
     mm2 = (m / E_tot)^2
@@ -140,7 +140,7 @@ Also see the functions `E_tot`; `pc`, `β`, `β1`, and `γ`
 
 function E_kinetic(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                                          β::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
-  m = mass(species)
+  m = massof(species)
 
   if !isnothing(pc)
     return pc^2 / (sqrt(pc^2 + m^2) + m)
@@ -170,7 +170,7 @@ Also see the functions `pc`, `β`, `β1`, `E_kinetic`, and `γ`
 
 function γ(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                            β::Union{Number, Nothing} = nothing, E_kinetic::Union{Number, Nothing} = nothing)
-  m = mass(species)
+  m = massof(species)
 
   if !isnothing(pc)
     return sqrt((pc/m)^2 + 1)

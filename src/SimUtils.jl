@@ -2,6 +2,8 @@ module SimUtils
 using FFTW, Random, GTPSA
 using AtomicAndPhysicalConstants
 
+@APCdef
+
 #export Quaternion
 export gen_pinknoise
 export cos_one, modulo2
