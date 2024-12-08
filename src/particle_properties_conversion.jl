@@ -1,17 +1,17 @@
 #---------------------------------------------------------------------------------------------------
-# E_tot
+# calc_E_tot
 
 """
-   E_tot(species::Species; pc::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing,
-                         E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
+   calc_E_tot(species::Species; pc::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing,
+                  E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> E_tot::Number
    
 Returns the total energy (in `eV`).
-One and only one of the optional arguments pc, β, E_kinetic, or γ should be set.
+One and only one of the optional arguments `pc`, `β`, `E_kinetic`, or `γ` should be set.
 
-Also see the functions `pc`, `β`, `β1`, `E_kinetic`, and `γ`
-""" E_tot 
+Also see the functions `calc_pc`, `calc_β`, `calc_β1`, `calc_E_kinetic`, and `calc_γ`
+""" calc_E_tot 
 
-function E_tot(species::Species; pc::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
+function calc_E_tot(species::Species; pc::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
                            E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
   m = massof(species)
 
@@ -29,19 +29,19 @@ function E_tot(species::Species; pc::Union{Number, Nothing} = nothing, β::Union
 end
 
 #---------------------------------------------------------------------------------------------------
-# pc
+# calc_pc
 
 """
-   pc(species::Species; E_tot::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
-                          E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
+   calc_pc(species::Species; E_tot::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
+          E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> pc::Number
    
 Returns the total energy (in `eV`). 
-One and only one of the optional arguments E_tot, β, E_kinetic, or γ should be set.
+One and only one of the optional arguments `E_tot`, `β`, `E_kinetic`, or `γ` should be set.
 
-Also see the functions `E_tot`, `β`, `β1`, `E_kinetic`, and `γ`
-""" pc
+Also see the functions `calc_E_tot`, `calc_β`, `calc_β1`, `calc_E_kinetic`, and `calc_γ`
+""" calc_pc
 
-function pc(species::Species; 
+function calc_pc(species::Species; 
                   E_tot::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
                           E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
   m = massof(species)
@@ -60,19 +60,19 @@ function pc(species::Species;
 end
 
 #---------------------------------------------------------------------------------------------------
-# β
+# calc_β
 
 """
-   β(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-                          E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
+   calc_β(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+              E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> β::Number
    
 Returns the velocity `β` = `v/c`. 
-One and only one of the optional arguments E_tot, pc, E_kinetic, or γ should be set.
+One and only one of the optional arguments `E_tot`, `pc`, `E_kinetic`, or `γ` should be set.
 
-Also see the functions `E_tot`, `pc`, `β1`, `E_kinetic`, and `γ`
-""" β
+Also see the functions `calc_E_tot`, `calc_pc`, `calc_β1`, `calc_E_kinetic`, and `calc_γ`
+""" calc_β
 
-function β(species::Species; 
+function calc_β(species::Species; 
                 E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                           E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
   m = massof(species)
@@ -92,19 +92,19 @@ function β(species::Species;
 end
 
 #---------------------------------------------------------------------------------------------------
-# β1
+# calc_β1
 
 """
-   β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-                          E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
+   calc_β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+           E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> 1-β::NUmber
 Returns the quantity `1 - β` = `1 - v/c`. In the high energy limit, this is `1/(2γ^2)`.
 β1 is computed such that in the high energy limit, round off error is not a problem.
-One and only one of the optional arguments E_tot, pc, E_kinetic, or γ should be set.
+One and only one of the optional arguments `E_tot`, `pc`, `E_kinetic`, or `γ` should be set.
 
-Also see the functions `E_tot`; `pc`, `β`, `E_kinetic`, and `γ`
-""" β1
+Also see the functions `calc_E_tot`; `calc_pc`, `calc_β`, `calc_E_kinetic`, and `calc_γ`
+""" calc_β1
 
-function β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+function calc_β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                            E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
   m = massof(species)
 
@@ -126,19 +126,19 @@ function β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Unio
 end
 
 #---------------------------------------------------------------------------------------------------
-# E_kinetic
+# calc_E_kinetic
 
 """
-   E_kinetic(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-                                    β::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
+   calc_E_kinetic(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+                      β::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> E_kinetic::Number
    
 Returns the kinetic energy in `eV`.
-One and only one of the optional arguments E_tot, pc, β, or γ should be set.
+One and only one of the optional arguments `E_tot`, `pc`, `β`, or `γ` should be set.
 
-Also see the functions `E_tot`; `pc`, `β`, `β1`, and `γ`
-""" E_kinetic
+Also see the functions  `calc_E_tot`; `calc_pc`, `calc_β`, `calc_β1`, and `calc_γ`
+""" calc_E_kinetic
 
-function E_kinetic(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+function calc_E_kinetic(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                                          β::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
   m = massof(species)
 
@@ -156,20 +156,20 @@ function E_kinetic(species::Species; E_tot::Union{Number, Nothing} = nothing, pc
 end
 
 #---------------------------------------------------------------------------------------------------
-# γ
+# calc_γ
 
 """
-   γ(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-                           β::Union{Number, Nothing} = nothing, E_kinetic::Union{Number, Nothing} = nothing)
+   calc_γ(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+          β::Union{Number, Nothing} = nothing, E_kinetic::Union{Number, Nothing} = nothing) -> γ::Number
    
 Returns the total energy (in `eV`). 
-One and only one of the optional arguments E_tot, pc, β, or E_kinetic should be set.
+One and only one of the optional arguments `E_tot`, `pc`, `β`, or `E_kinetic` should be set.
 
-Also see the functions `pc`, `β`, `β1`, `E_kinetic`, and `γ`
-""" γ 
+Also see the functions `calc_pc`, `calc_β`, `calc_β1`, `calc_E_kinetic`, and `calc_γ`
+""" calc_γ 
 
-function γ(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-                           β::Union{Number, Nothing} = nothing, E_kinetic::Union{Number, Nothing} = nothing)
+function calc_γ(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+             β::Union{Number, Nothing} = nothing, E_kinetic::Union{Number, Nothing} = nothing)
   m = massof(species)
 
   if !isnothing(pc)
@@ -183,5 +183,23 @@ function γ(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union
   else
     error("Not one of pc, β, E_kinetic, nor γ set.")
   end
+end
+
+#---------------------------------------------------------------------------------------------------
+# calc_changed_energy
+
+"""
+    calc_changed_energy(species::Species; old_pc::Number, dE::Number) -> (pc, E_tot)
+
+Given an initial `old_pc` particle momentum*c, and a change in energy `dE`, calculate
+the final momentum*c and total energy.
+
+The calculation is done in such a way as to not loose precision.
+""" calc_changed_energy
+
+function calc_changed_energy(species::Species; old_pc::Number, dE::Number)
+  m = massof(species)
+  p2 = old_pc^2 + dE^2 + 2*sqrt(old_pc^2 + m^2)
+  return sqrt(p2), sqrt(p2 + m^2)
 end
 
