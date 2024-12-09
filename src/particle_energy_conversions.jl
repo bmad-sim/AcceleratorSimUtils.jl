@@ -2,13 +2,13 @@
 # calc_E_tot
 
 """
-   calc_E_tot(mass::Number; pc::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing,
-                  E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> E_tot::Number
-   calc_E_tot(species::Species; pc::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing,
-                  E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> E_tot::Number
+    calc_E_tot(mass; pc = nothing, β = nothing, E_kinetic = nothing, γ = nothing) -> E_tot
+    calc_E_tot(species; pc = nothing, β = nothing, E_kinetic = nothing, γ = nothing) -> E_tot
 
-Returns the total energy (in `eV`).
+Returns the total energy of a particle (in `eV`) given one of `pc` (momentum*c), `β` (velocity/c), 
+`E_kinetic` (kinetic energy), or `γ` (relativistic factor).
 One and only one of the optional arguments `pc`, `β`, `E_kinetic`, or `γ` should be set.
+All arguments are `Numbers` except `species` which is of type `Species`.
 
 The `mass` argument is in units of `energy/c^2`.
 
@@ -38,13 +38,13 @@ end
 # calc_pc
 
 """
-   calc_pc(species::Species; E_tot::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
-          E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> pc::Number
-   calc_pc(mass::Number; E_tot::Union{Number, Nothing} = nothing, β::Union{Number, Nothing} = nothing, 
-          E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> pc::Number
+    calc_pc(mass; E_tot = nothing, β = nothing, E_kinetic = nothing, γ = nothing) -> pc
+    calc_pc(species; E_tot = nothing, β = nothing, E_kinetic = nothing, γ = nothing) -> pc
    
-Returns the total energy (in `eV`). 
+Returns the particle momentum*c (in `eV`) given one of `E_tot` (total energy), `β` (velocity/c), 
+`E_kinetic` (kinetic energy), or `γ` (relativistic factor). 
 One and only one of the optional arguments `E_tot`, `β`, `E_kinetic`, or `γ` should be set.
+All arguments are `Numbers` except `species` which is of type `Species`.
 
 The `mass` argument is in units of `energy/c^2`.
 
@@ -76,13 +76,13 @@ end
 # calc_β
 
 """
-   calc_β(mass::Number; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-              E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> β::Number
-   calc_β(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-              E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> β::Number
+    calc_β(mass; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> β
+    calc_β(species; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> β
    
-Returns the velocity `β` = `v/c`. 
+Returns the normalized velocity `β` = `v/c` of a particle given one of `E_tot` (total energy), 
+`pc` (momentum*c), `E_kinetic` (kinetic energy), or `γ` (relativistic factor). 
 One and only one of the optional arguments `E_tot`, `pc`, `E_kinetic`, or `γ` should be set.
+All arguments are `Numbers` except `species` which is of type `Species`.
 
 The `mass` argument is in units of `energy/c^2`.
 
@@ -116,15 +116,16 @@ end
 # calc_β1
 
 """
-   calc_β1(mass::Number; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-           E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> 1-β::NUmber
-   calc_β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-           E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> 1-β::NUmber
+    calc_β1(mass; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> 1-β
+    calc_β1(species; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> 1-β
 
-Returns the quantity `1 - β` = `1 - v/c`. In the high energy limit, this is `1/(2γ^2)`.
+Returns the quantity `1 - β` = `1 - v/c` of a particle given one of `E_tot` (total energy), 
+`pc` (momentum*c), `E_kinetic` (kinetic energy), or `γ` (relativistic factor). 
+In the high energy limit, this is approximately `1/(2γ^2)`.
 β1 is computed such that in the high energy limit, round off error is not a problem.
-One and only one of the optional arguments `E_tot`, `pc`, `E_kinetic`, or `γ` should be set.
 
+One and only one of the optional arguments `E_tot`, `pc`, `E_kinetic`, or `γ` should be set.
+All arguments are `Numbers` except `species` which is of type `Species`.
 The `mass` argument is in units of `energy/c^2`.
 
 Also see the functions `calc_E_tot`; `calc_pc`, `calc_β`, `calc_E_kinetic`, and `calc_γ`
@@ -157,14 +158,14 @@ end
 # calc_E_kinetic
 
 """
-   calc_E_kinetic(mass::Number; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-                      β::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> E_kinetic::Number
-   calc_E_kinetic(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-                      β::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing) -> E_kinetic::Number
+    calc_E_kinetic(mass; E_tot = nothing, pc = nothing, β = nothing, γ = nothing) -> E_kinetic
+    calc_E_kinetic(species; E_tot = nothing, pc = nothing, β = nothing, γ = nothing) -> E_kinetic
    
-Returns the kinetic energy in `eV`.
+Returns the kinetic energy of a particle in `eV` given one of `E_tot` (total energy), 
+`pc` (momentum*c), `β` (velocity/c), or `γ` (relativistic factor).
 One and only one of the optional arguments `E_tot`, `pc`, `β`, or `γ` should be set.
 
+All arguments are `Numbers` except `species` which is of type `Species`.
 The `mass` argument is in units of `energy/c^2`.
 
 Also see the functions  `calc_E_tot`; `calc_pc`, `calc_β`, `calc_β1`, and `calc_γ`
@@ -194,14 +195,14 @@ end
 # calc_γ
 
 """
-   calc_γ(mass::Number; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-          β::Union{Number, Nothing} = nothing, E_kinetic::Union{Number, Nothing} = nothing) -> γ::Number
-   calc_γ(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
-          β::Union{Number, Nothing} = nothing, E_kinetic::Union{Number, Nothing} = nothing) -> γ::Number
+    calc_γ(mass; E_tot = nothing, pc = nothing, β = nothing, E_kinetic = nothing) -> γ
+    calc_γ(species; E_tot = nothing, pc = nothing, β = nothing, E_kinetic = nothing) -> γ
 
-Returns the total energy (in `eV`). 
+Returns the relativistic gamma factor of a particle given `E_tot` (total energy), 
+`pc` (momentum*c), `β` (velocity/c), or `E_kinetic` (kinetic energy). 
 One and only one of the optional arguments `E_tot`, `pc`, `β`, or `E_kinetic` should be set.
 
+All arguments are `Numbers` except `species` which is of type `Species`.
 The `mass` argument is in units of `energy/c^2`.
 
 Also see the functions `calc_pc`, `calc_β`, `calc_β1`, `calc_E_kinetic`, and `calc_γ`
@@ -231,11 +232,12 @@ end
 # calc_changed_energy
 
 """
-    calc_changed_energy(mass::Number; old_pc::Number, dE::Number) -> (pc, E_tot)
-    calc_changed_energy(species::Species; old_pc::Number, dE::Number) -> (pc, E_tot)
+    calc_changed_energy(mass; old_pc, dE) -> (pc, E_tot)
+    calc_changed_energy(species::Species; old_pc, dE) -> (pc, E_tot)
 
 Given an initial `old_pc` particle momentum*c, and a change in energy `dE`, calculate
 the final momentum*c and total energy.
+All arguments are `Numbers` except `species` which is of type `Species`.
 
 The `mass` argument is in units of `energy/c^2`.
 
