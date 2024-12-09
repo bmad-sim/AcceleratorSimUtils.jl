@@ -1,6 +1,6 @@
 module SimUtils
 
-using FFTW, Random, GTPSA
+using FFTW, Random
 using AtomicAndPhysicalConstants
 
 @APCdef
