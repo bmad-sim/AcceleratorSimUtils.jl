@@ -116,22 +116,22 @@ end
 # calc_β1
 
 """
-    calc_β1(mass; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> 1-β
-    calc_β1(species; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> 1-β
+    calc_1β(mass; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> 1-β
+    calc_1β(species; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> 1-β
 
 Returns the quantity `1 - β` = `1 - v/c` of a particle given one of `E_tot` (total energy), 
 `pc` (momentum*c), `E_kinetic` (kinetic energy), or `γ` (relativistic factor). 
 In the high energy limit, this is approximately `1/(2γ^2)`.
-β1 is computed such that in the high energy limit, round off error is not a problem.
+`calc_1β` is computed such that in the high energy limit, round off error is not a problem.
 
 One and only one of the optional arguments `E_tot`, `pc`, `E_kinetic`, or `γ` should be set.
 All arguments are `Numbers` except `species` which is of type `Species`.
 The `mass` argument is in units of `energy/c^2`.
 
 Also see the functions `calc_E_tot`; `calc_pc`, `calc_β`, `calc_E_kinetic`, and `calc_γ`
-""" calc_β1
+""" calc_1β
 
-function calc_β1(mass::Number; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+function calc_1β(mass::Number; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                            E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
   if !isnothing(E_tot)
     gamma_inv2 = (mass / E_tot)^2
@@ -235,8 +235,9 @@ end
     calc_changed_energy(mass; old_pc, dE) -> (pc, E_tot)
     calc_changed_energy(species::Species; old_pc, dE) -> (pc, E_tot)
 
-Given an initial `old_pc` particle momentum*c, and a change in energy `dE`, calculate
-the final momentum*c and total energy.
+Given an initial `old_pc` particle `momentum*c`, and a change in energy `dE`, calculate
+the final `momentum*c` and total energy. If `dE` is too large and negative for there
+to be a solution, `NaN, NaN` is returned.
 All arguments are `Numbers` except `species` which is of type `Species`.
 
 The `mass` argument is in units of `energy/c^2`.
@@ -245,7 +246,8 @@ The calculation is done in such a way as to not loose precision.
 """ calc_changed_energy
 
 function calc_changed_energy(mass::Number, old_pc::Number, dE::Number)
-  p2 = old_pc^2 + dE^2 + 2*sqrt(old_pc^2 + mass^2)
+  p2 = old_pc^2 + dE^2 + 2*sqrt(old_pc^2 + mass^2) * dE
+  if p2 < 0; (return NaN, NaN); end
   return sqrt(p2), sqrt(p2 + mass^2)
 end
 

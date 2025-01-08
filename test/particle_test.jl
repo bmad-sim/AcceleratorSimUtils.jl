@@ -51,5 +51,5 @@ s = Species("electron")
   @test calc_γ(s, E_kinetic = calc_E_kinetic(s, γ = 1e12)) ≈ 1e12
   @test calc_γ(s, E_tot = calc_E_tot(s, γ = 1e12)) ≈ 1e12
 
-  @test all(calc_changed_energy(s, 1e4, 2e4) .≈ (22383.52504807421, 511488.9537417781))
+  @test isapprox([calc_changed_energy(s, 1e4, 2e4)...], [144719.97635195663, 531096.7888827723], rtol = 1e-15)
 end
