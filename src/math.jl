@@ -32,18 +32,18 @@ function modulo2(x, amp)
 end
 
 #---------------------------------------------------------------------------------------------------
-# un_sinc
+# sincu
 
 """
-  un_sinc(x, nd::Int = 0)
+  sincu(x, nd::Int = 0)
 
 Returns the unnormalized `sinc(x)` (equal to `sin(x)/x`, no factors of pi here) for `nd = 0`
 or the `nd`th derivative for `nd > 0`.
 
 Note: Currently, only `nd = 0` or `1` are implemented
-""" un_sinc(x)
+""" sincu(x)
 
-function un_sinc(x, nd::Int = 0)
+function sincu(x, nd::Int = 0)
   if nd == 0
     return sinc(x/pi)
   elseif nd == 1
@@ -62,22 +62,22 @@ function un_sinc(x, nd::Int = 0)
 end
 
 #---------------------------------------------------------------------------------------------------
-# un_cosc
+# coscu
 
 """
-  un_cosc(x, nd::Int = 0)
+  coscu(x, nd::Int = 0)
 
 Returns, to machine precision, the `nd`th derivative of `(1 - cos(x)) / x^2`. 
 If `nd = 0`, returns the function itself. 
 
 Note: Currently, only `nd = 0` or `1` are implemented
-""" un_cosc
+""" coscu
 
-function un_cosc(x, nd::Int = 0)
+function coscu(x, nd::Int = 0)
   if nd == 0
-    return 0.5 * un_sinc(x/2)^2
+    return 0.5 * sincu(x/2)^2
   elseif nd == 1
-    return 0.5 * un_sinc(x/2) * un_sinc(x/2, 1)
+    return 0.5 * sincu(x/2) * sincu(x/2, 1)
   else
     error("nd = $nd not yet implemented.")
   end

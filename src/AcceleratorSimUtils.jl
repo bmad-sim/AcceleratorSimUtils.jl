@@ -1,4 +1,4 @@
-module SimUtils
+module AcceleratorSimUtils
 
 using FFTW, Random
 using AtomicAndPhysicalConstants
@@ -6,7 +6,7 @@ using AtomicAndPhysicalConstants
 @APCdef
 
 export gen_pinknoise
-export one_cos, modulo2, un_sinc, un_cosc
+export one_cos, modulo2, sincu, coscu
 export calc_E_tot, calc_E_kinetic, calc_pc, calc_β, calc_1β, calc_γ, calc_changed_energy
 
 include("math.jl")

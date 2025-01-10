@@ -1,7 +1,7 @@
-using SimUtils
+using AcceleratorSimUtils
 using Test
 
-@testset verbose = true "SimUtils.jl" begin
+@testset verbose = true "AcceleratorSimUtils.jl" begin
 
   @testset "math_test" begin
     include("math_test.jl")

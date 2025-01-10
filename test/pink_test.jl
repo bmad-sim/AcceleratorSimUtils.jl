@@ -1,4 +1,4 @@
-using SimUtils
+using AcceleratorSimUtils
 using Test
 
 # Pink noise test here

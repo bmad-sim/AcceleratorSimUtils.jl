@@ -1,5 +1,5 @@
-name = "SimUtils"
-uuid = "042f21a8-4046-4c2b-b9ed-b6e14110b343"
+name = "AcceleratorSimUtils"
+uuid = "8b14b3b2-39c5-4be4-bdc0-0b322e577224"
 authors = ["mattsignorelli <mgs255@cornell.edu> and contributors"]
 version = "0.4.0"
 

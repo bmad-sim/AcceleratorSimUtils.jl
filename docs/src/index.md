@@ -1,14 +1,14 @@
 ```@meta
-CurrentModule = SimUtils
+CurrentModule = AcceleratorSimUtils
 ```
 
-# SimUtils
+# AcceleratorSimUtils
 
-Documentation for [SimUtils](https://github.com/bmad-sim/SimUtils.jl).
+Documentation for [AcceleratorSimUtils](https://github.com/bmad-sim/AcceleratorSimUtils.jl).
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [SimUtils]
+Modules = [AcceleratorSimUtils]
 ```
