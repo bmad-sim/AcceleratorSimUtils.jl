@@ -113,7 +113,7 @@ function calc_β(species::Species;
 end
 
 #---------------------------------------------------------------------------------------------------
-# calc_β1
+# calc_1β
 
 """
     calc_1β(mass; E_tot = nothing, pc = nothing, E_kinetic = nothing, γ = nothing) -> 1-β
@@ -149,9 +149,9 @@ function calc_1β(mass::Number; E_tot::Union{Number, Nothing} = nothing, pc::Uni
   end
 end
 
-function calc_β1(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
+function calc_1β(species::Species; E_tot::Union{Number, Nothing} = nothing, pc::Union{Number, Nothing} = nothing, 
                            E_kinetic::Union{Number, Nothing} = nothing, γ::Union{Number, Nothing} = nothing)
-  return calc_β1(massof(species), E_tot = E_tot, pc = pc, E_kinetic = E_kinetic, γ = γ)
+  return calc_1β(massof(species), E_tot = E_tot, pc = pc, E_kinetic = E_kinetic, γ = γ)
 end
 
 #---------------------------------------------------------------------------------------------------
