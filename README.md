@@ -11,8 +11,8 @@ A package of utility routines used by the SciBmad project for the simulation of 
 - `calc_γ(...)` - Calculate relativistic gamma factor.
 - `calc_E_tot(...)` - Calculate total energy.
 - `calc_pc(...)` - Calculate momentum * c.
-- `calc_β(...)` - Calculate calculate velocity/c.
-- `calc_1β(...)` - Calculate calculate `1 - β`.
+- `calc_β(...)` - Calculate velocity/c.
+- `calc_1β(...)` - Calculate `1 - β`.
 - `calc_changed_energy(...)` - Calculate the new energy and momentum given initial momentum and energy change.
 
 ## Math routines

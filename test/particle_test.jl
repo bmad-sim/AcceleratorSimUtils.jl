@@ -37,10 +37,10 @@ s = Species("electron")
   @test calc_β(s, E_kinetic = calc_E_kinetic(s, β = 0.9999)) ≈ 0.9999
   @test calc_β(s, γ = calc_γ(s, β = 0.9999)) ≈ 0.9999
 
-  @test calc_β1(s, E_tot = calc_E_tot(s, β = 1 - 1e-6)) ≈ 1e-6
-  @test calc_β1(s, pc = calc_pc(s, β = 1 - 1e-6)) ≈ 1e-6
-  @test calc_β1(s, E_kinetic = calc_E_kinetic(s, β = 1 - 1e-6)) ≈ 1e-6
-  @test calc_β1(s, γ = calc_γ(s, β = 1 - 1e-6)) ≈ 1e-6
+  @test calc_1β(s, E_tot = calc_E_tot(s, β = 1 - 1e-6)) ≈ 1e-6
+  @test calc_1β(s, pc = calc_pc(s, β = 1 - 1e-6)) ≈ 1e-6
+  @test calc_1β(s, E_kinetic = calc_E_kinetic(s, β = 1 - 1e-6)) ≈ 1e-6
+  @test calc_1β(s, γ = calc_γ(s, β = 1 - 1e-6)) ≈ 1e-6
 
   @test calc_γ(s, pc = calc_pc(s, γ = 1.0001)) ≈ 1.0001
   @test calc_γ(s, β = calc_β(s, γ = 1.0001)) ≈ 1.0001
