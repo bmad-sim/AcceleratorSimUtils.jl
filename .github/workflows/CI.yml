@@ -64,6 +64,6 @@ jobs:
         shell: julia --project=docs --color=yes {0}
         run: |
           using Documenter: DocMeta, doctest
-          using SimUtils
-          DocMeta.setdocmeta!(SimUtils, :DocTestSetup, :(using SimUtils); recursive=true)
-          doctest(SimUtils)
+          using AcceleratorSimUtils
+          DocMeta.setdocmeta!(AcceleratorSimUtils, :DocTestSetup, :(using AcceleratorSimUtils); recursive=true)
+          doctest(AcceleratorSimUtils)

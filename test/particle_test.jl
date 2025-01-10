@@ -1,4 +1,4 @@
-using SimUtils, AtomicAndPhysicalConstants
+using AcceleratorSimUtils, AtomicAndPhysicalConstants
 using Test
 
 s = Species("electron")
