@@ -1,3 +1,9 @@
 Manifest.toml
 /docs/Manifest.toml
 /docs/build/
+
+# ignore auto-generated files
+.DS_Store
+*~
+*.swp
+
