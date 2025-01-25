@@ -35,29 +35,30 @@ end
 # sincu
 
 """
-  sincu(x, nd::Int = 0)
+  sincu(z, nd::Int = 0)
 
-Returns the unnormalized `sinc(x)` (equal to `sin(x)/x`, no factors of pi here) for `nd = 0`
+Returns the unnormalized `sinc(z)` (equal to `sin(z)/z`, no factors of pi here) for `nd = 0`
 or the `nd`th derivative for `nd > 0`.
 
 Note: Currently, only `nd = 0` or `1` are implemented
-""" sincu(x)
+""" sincu(z)
 
-function sincu(x, nd::Int = 0)
+function sincu(z, nd::Int = 0)
   if nd == 0
-    return sinc(x/pi)
+    return sinc(z/pi)
   elseif nd == 1
-    if abs(x) > 1
-      return (x*cos(x) - sin(x)) / x^2
+    if abs(x) > 1.70
+      return (z*cos(z) - sin(z)) / z^2
     else
-      c1 = -1.0/3; c3 = 1.0/30; c5 = -1.0/840; c7 = 1.0/45360; c9 = -1.0/3991680; c11 = 1.0/518918400
-      c13 = -1.0/93405312000; c15 = 1.0/22230464256000; c17 = -1.0/6758061133824000
-      x2 = x^2
-      return x * (c1 + x2 * (c3 + x2 * (c5 + x2 * (c7 + x2 * (c9 + x2 * (c11 + x2 * 
-                 (c13 + x2 * (c15 + x2 * c17))))))))
+      c1 = 1.0/3;    c7 = 1.0/45360;     c13 = 1.0/93405312000;      c19 = 1.0/2554547108585472000;
+      c3 = 1.0/30;   c9 = 1.0/3991680;   c15 = 1.0/22230464256000;
+      c5 = 1.0/840; c11 = 1.0/518918400; c17 = 1.0/6758061133824000;
+      z2 = z^2
+      return -z * ( c1 - z2 * ( c3 - z2 * ( c5 - z2 * ( c7 - z2 * (c9 - z2
+                * (c11 - z2 * (c13 - z2 * (c15 - z2 * (c17 - z2 * c19)))))))))
     end
   else
-    error("nd = $nd not yet implemented.")
+    error("sincu(z, nd): nd = $nd not yet implemented.")
   end
 end
 
