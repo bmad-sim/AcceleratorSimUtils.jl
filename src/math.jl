@@ -47,7 +47,7 @@ function sincu(z, nd::Int = 0)
   if nd == 0
     return sinc(z/pi)
   elseif nd == 1
-    if abs(x) > 1.70
+    if abs(z) > 1.70
       return (z*cos(z) - sin(z)) / z^2
     else
       c1 = 1.0/3;    c7 = 1.0/45360;     c13 = 1.0/93405312000;      c19 = 1.0/2554547108585472000;
