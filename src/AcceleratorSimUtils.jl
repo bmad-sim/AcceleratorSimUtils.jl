@@ -1,7 +1,7 @@
 module AcceleratorSimUtils
 
 using FFTW, Random
-using AtomicAndPhysicalConstants
+using AtomicAndPhysicalConstants.CODATA2018
 
 @APCdef
 
