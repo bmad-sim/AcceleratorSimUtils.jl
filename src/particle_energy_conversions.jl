@@ -237,7 +237,7 @@ end
 
 Given an initial `old_pc` particle `momentum*c`, and a change in energy `dE`, calculate
 the final `momentum*c` and total energy. If `dE` is too large and negative for there
-to be a solution, `NaN, NaN` is returned.
+to be a solution, `nothing, nothing` is returned.
 All arguments are `Numbers` except `species` which is of type `Species`.
 
 The `mass` argument is in units of `energy/c^2`.
@@ -247,7 +247,7 @@ The calculation is done in such a way as to not loose precision.
 
 function calc_changed_energy(mass::Number, old_pc::Number, dE::Number)
   p2 = old_pc^2 + dE^2 + 2*sqrt(old_pc^2 + mass^2) * dE
-  if p2 < 0; (return NaN, NaN); end
+  if p2 < 0; (return nothing, nothing); end
   return sqrt(p2), sqrt(p2 + mass^2)
 end
 

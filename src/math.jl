@@ -19,7 +19,7 @@ Function to calculate `1 - cos(x)` to machine precision.
 This is usful if angle can be near zero where the direct evaluation of `1 - cos(x)` is inaccurate.
 """ one_cos
 
-one_cos(x) = 2.0 * sin(x/2.0)^2
+one_cos(x) = 2.0 * sin(0.5*x)^2
 
 #---------------------------------------------------------------------------------------------------
 # modulo2
@@ -87,9 +87,9 @@ Note: Currently, only `nd = 0` or `1` are implemented
 
 function coscu(x, nd::Int = 0)
   if nd == 0
-    return 0.5 * sincu(x/2)^2
+    return 0.5 * sincu(0.5*x)^2
   elseif nd == 1
-    return 0.5 * sincu(x/2) * sincu(x/2, 1)
+    return 0.5 * sincu(0.5*x) * sincu(0.5*x, 1)
   else
     error("nd = $nd not yet implemented.")
   end
