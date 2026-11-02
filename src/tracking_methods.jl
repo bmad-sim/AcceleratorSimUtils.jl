@@ -6,12 +6,12 @@ for name in (:DriftKick, :MatrixKick, :BendKick, :SolenoidKick)
 @eval begin
   Base.@kwdef struct $name <: AbstractSymplectic
     order::Int = 4
-    use_optimized_schemes::Bool = true
-    function $name(order, use_optimized_schemes) 
+    opt_scheme::Bool = true
+    function $name(order, opt_scheme) 
       if !(order in (2, 4, 6, 8, 10))
         error("$($name) only supports orders 2, 4, 6, 8, and 10")
       end
-      return new(order, use_optimized_schemes)
+      return new(order, opt_scheme)
     end
   end
 end
@@ -19,19 +19,19 @@ end
 
 Base.@kwdef struct Implicit <: AbstractSymplectic
   order::Int = 4
-  use_optimized_schemes::Bool = true
+  opt_scheme::Bool = true
   use_newton::Bool = false
-  function Implicit(order, use_optimized_schemes, use_newton) 
+  function Implicit(order, opt_scheme, use_newton) 
     if !(order in (2, 4, 6, 8, 10))
       error("Implicit only supports orders 2, 4, 6, 8, and 10")
     end
-    return new(order, use_optimized_schemes, use_newton)
+    return new(order, opt_scheme, use_newton)
   end
 end
 
 
 # ========== Exact ===========================
-# For patches, maps, markers
+# For patches, maps, markers, thin elements
 struct Exact end
 
 # ========== SaganCavity =====================
