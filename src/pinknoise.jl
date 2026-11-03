@@ -1,6 +1,5 @@
 """
-function gen_pinknoise(
-    beta::Float64=1.0, size::Int64=2^12, dt::Float64=1.0, f0::Float64=1.0)
+    gen_pinknoise(beta::Float64=1.0, size::Int64=2^12, dt::Float64=1.0, f0::Float64=1.0)
 
 Random number generator that has a "pink noise" spectrum with frequency rolloff coefficient `beta`.
 
@@ -15,8 +14,7 @@ Random number generator that has a "pink noise" spectrum with frequency rolloff 
 Note: The algorithm is based on 
     "Timmer, J. and Koenig, M.: On generating power law noise. Astron. Astrophys. 300, 707-710 (1995)"
 
-""" gen_pinknoise
-
+"""
 function gen_pinknoise(
   beta::Float64=1.0,
   size::Int64=2^12;

@@ -1,16 +1,11 @@
 module AcceleratorSimUtils
 
-using FFTW, Random
-using AtomicAndPhysicalConstants
+using FFTW, GTPSA, Random, AtomicAndPhysicalConstants
+export E_to_R, E_to_v, R_to_E, R_to_gamma, R_to_pc, R_to_beta_gamma, R_to_v, 
+        beta_gamma_to_v, pc_to_R, dR_to_dpc, dpc_to_dR, dE_to_dpc, dpc_to_dE,
+        dE_to_dR, dR_to_dE, pc_to_E, E_to_pc
 
-@APCdef
-
-export gen_pinknoise
-export one_cos, sqrt_one, modulo2, sincu, coscu
-export calc_E_tot, calc_E_kinetic, calc_pc, calc_β, calc_1β, calc_γ, calc_changed_energy
-
-include("math.jl")
+include("energy.jl")
 include("pinknoise.jl")
-include("particle_energy_conversions.jl")
 
 end
